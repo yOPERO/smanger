@@ -1,0 +1,58 @@
+from django.shortcuts import render
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from mysm.models import Screen, Link, ScreenLink
+
+from django.core.urlresolvers import reverse_lazy
+
+# Create your views here.
+
+from django.http import HttpResponse
+
+def index(request):
+	    return HttpResponse("Rango says hey there world!")
+
+class ScreenListView(ListView):
+	model = Screen
+
+class LinkListView(ListView):
+	model = Link
+
+class ScreenDetailView(DetailView):
+	model = Screen
+
+	def get_context_data(self, **kwargs):
+		context = super(ScreenDetailView, self).get_context_data(**kwargs)
+		urls_screen = ScreenLink.objects.filter(sl_screen = self.kwargs['pk'])
+		dLinks = []
+		dTimes = []
+		
+		for i in urls_screen:
+			dTimes.append(i.display_time)
+			a = Link.objects.get(url=i)
+			dLinks.append(a)
+
+		context['myscreen'] = Screen.objects.get(id = self.kwargs['pk'])
+		context['links'] = zip(dLinks,dTimes)
+
+		return context
+
+
+
+class ScreenUpdate(UpdateView):
+    model = Screen
+    fields = ['location', 'brand', 'model']
+    template_name_suffix = '_update_form'
+
+
+class ScreenDelete(DeleteView):
+    model = Screen
+    success_url = reverse_lazy('screen-list')
+
+class ScreenCreate(CreateView):
+    model = Screen
+    fields = ['brand','model','location']
+
+
+

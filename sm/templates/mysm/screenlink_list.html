@@ -1,0 +1,9 @@
+<h1>ScreenLinks</h1>
+<ul>
+{% for sl in object_list %}
+		<li><a href="{% url 'sl_detail' sl.pk%}">Link-{{ sl }}</a> - </li>
+	{{sl.sl_screen}}--{{sl.sl_link}}-{{sl.display_time}}<br>
+    {% empty %}
+        <li>No articles yet.</li>
+	{% endfor %}
+	</ul>

@@ -1,0 +1,9 @@
+<h1>Screens</h1>
+<ul>
+{% for screen in object_list %}
+    <li><a href="{% url 'screen-detail' screen.pk%}">Screen-{{ screen.id }}</a> - {{ screen.brand }}{{screen.model}} {{screen.location}}</li>
+
+    {% empty %}
+        <li>No articles yet.</li>
+	{% endfor %}
+	</ul>

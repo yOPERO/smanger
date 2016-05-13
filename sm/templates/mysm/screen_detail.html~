@@ -1,0 +1,33 @@
+
+<h1> Screen{{ object.id }}</h1>
+<a href="{% url 'screen_update' myscreen.id %}">Update Screen</a>
+<a href="{% url 'screen_delete' myscreen.id %}">Delete Screen</a>
+<br>
+{{myscreen.id}}--{{myscreen.brand}}--{{myscreen.model}--
+
+{% if links %}
+<table border="1" >
+  <tr>
+    <th>Url</th>
+    <th>DisplayTime</th>
+    <th>Category</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for link, time in links %}
+  <tr>
+    <td>{{link.url}}</td>
+    <td>{{time}}</td>
+    <td>{{link.category}}</td>
+    <td>{{link.link_type}}</td>
+    <td>delete</td>
+    <td>edit</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+{% else %}
+<br>This screen does not have any have links to display.
+{% endif %}

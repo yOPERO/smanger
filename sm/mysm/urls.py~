@@ -1,0 +1,21 @@
+from django.conf.urls import patterns, url
+from mysm.views import ScreenListView, ScreenDetailView, ScreenUpdate, ScreenDelete, ScreenCreate
+
+
+urlpatterns = patterns('',
+	#Screen Views
+	url(r'^$', ScreenListView.as_view(), name='screen-list'),
+	url(r'^screen/create/$', ScreenCreate.as_view(), name='screen_create'),	
+	url(r'^screen/(?P<pk>[-\w]+)/detail/$', ScreenDetailView.as_view(), name='screen-detail'),
+	url(r'^screen/(?P<pk>[0-9]+)/update/$', ScreenUpdate.as_view(), name='screen_update'),
+	url(r'^screen/(?P<pk>[0-9]+)/delete/$', ScreenDelete.as_view(), name='screen_delete'),
+
+	#ScreenLink Views
+	url(r'^$', ScreenListView.as_view(), name='screen-list'),
+	url(r'^screen/create/$', ScreenCreate.as_view(), name='screen_create'),	
+	url(r'^screen/(?P<pk>[-\w]+)/detail/$', ScreenDetailView.as_view(), name='screen-detail'),
+	url(r'^screen/(?P<pk>[0-9]+)/update/$', ScreenUpdate.as_view(), name='screen_update'),
+	url(r'^screen/(?P<pk>[0-9]+)/delete/$', ScreenDelete.as_view(), name='screen_delete'),
+
+	
+	)

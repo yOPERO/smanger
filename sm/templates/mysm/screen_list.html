@@ -1,0 +1,10 @@
+<h1>Screens</h1>
+<a href="{% url 'screen_create' %}">Add Screen</a>
+<ul>
+{% for screen in object_list %}
+    <li><a href="{% url 'screen_detail' screen.pk%}">Screen-{{ screen.id }}</a> - {{ screen.brand }}--{{screen.model}} --{{screen.location}}</li>
+    <a href="{% url 'screen_update' screen.id %}">Edit Screen</a> <a href="{% url 'screen_delete' screen.id %}">Delete Screen</a>
+    {% empty %}
+        <li>No articles yet.</li>
+	{% endfor %}
+	</ul>

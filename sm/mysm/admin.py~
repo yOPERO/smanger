@@ -1,0 +1,22 @@
+from django.contrib import admin
+from mysm.models import Screen, Link, Location, MediaType, ScreenLink, Category
+
+
+# Register your models here.
+
+
+class ScreenAdmin(admin.ModelAdmin):
+ 	list_display = ('id','location', 'brand', 'model')
+class LinkAdmin(admin.ModelAdmin):
+	list_display = ('url','category','link_type')
+# class MediaTypeAdmin(admin.ModelAdmin):
+# 	list_display = ('type_name',)
+class ScreenLinkAdmin(admin.ModelAdmin):
+	list_display = ('sl_screen', 'sl_link', 'display_time')
+
+admin.site.register(Screen, ScreenAdmin)
+admin.site.register(Link, LinkAdmin)
+admin.site.register(Location)
+admin.site.register(Category)
+admin.site.register(MediaType)
+admin.site.register(ScreenLink, ScreenLinkAdmin)
