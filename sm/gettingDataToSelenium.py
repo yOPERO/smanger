@@ -1,6 +1,9 @@
 import urllib, json
+import socket
 
-url = "http://ocalhost:8000/sm/sl/json/22/"
+myid = socket.gethostname()
+print(myid[-3:])
+url = "http://localhost:8000/sm/sl/json/22/"
 try:
 	response = urllib.urlopen(url)
 	data = json.loads(response.read())
