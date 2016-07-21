@@ -68,3 +68,4 @@ curl http://localhost:8000
 
 
 -->next http://agiliq.com/blog/2013/08/minimal-nginx-and-gunicorn-configuration-for-djang/
+-->next https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-django-with-postgres-nginx-and-gunicorn
